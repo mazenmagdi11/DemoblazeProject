@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>DemoBlaze</title>
+<link rel="apple-touch-icon" href="spark/logo.png">
+<link rel="shortcut icon" href="spark/logo.png">
+<link rel="stylesheet" href="spark/spark-style.css">
+<link rel="stylesheet" href="spark/font-awesome.min.css">
+<script src="spark/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa bdd-report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('spark/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">DemoBlaze UI </span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Dec 26, 2024 06:17:15 PM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Dec 26, 2024 06:17:15 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Dec 26, 2024 06:18:33 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>4</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>1</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='80%'>
+<b>4</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='20%'><b>1</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='80%'><b>4</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='20%'><b>1</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='97%'><b>40</b> steps passed</small></div>
+<div>
+<small data-tooltip='2%'><b>1</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"Verify that User Can Sign Up Successfully":12.578,"Verify that the user can login Successfully":10.267,"Ensure that the user can add products to the cart":20.893,": Ensure that both products are in the cart with accurate details":15.288,"Ensure that the user can successfully complete the purchase":17.703
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@smoke</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 4,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 4,
+failChild: 1,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 40,
+failGrandChild: 1,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script><div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@smoke</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Verify that User Can Sign Up Successfully</p>
+            <p class="text-sm">
+              <span>6:17:16 PM</span> / <span>00:00:12:578</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">Verify that User Can Sign Up Successfully</h5>
+<span class='badge badge-success'>12.26.2024 6:17:16 PM</span>
+<span class='badge badge-danger'>12.26.2024 6:17:29 PM</span>
+<span class='badge badge-default'>00:00:12:578</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>Verify that User Can Sign Up Successfully</div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepDefs.TC01_SignUpSteps.user_click_on_signup_button()">
+                <span>When user press on signup button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC01_SignUpSteps.user_signup_with_valid(java.lang.String,java.lang.String)">
+                <span>And user signup with valid "Mazen.magdi116@gmail.com" and "1234567890"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC01_SignUpSteps.press_on_signup_button()">
+                <span>And press on signup button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepDefs.TC01_SignUpSteps.verify_signup()">
+                <span>Then verify user signup successfully</span>
+      <div>
+        <textarea disabled class="code-block">java.lang.AssertionError: expected [Sign up successful] but found [This user already exist.]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at stepDefs.TC01_SignUpSteps.verify_signup(TC01_SignUpSteps.java:43)
+	at ✽.verify user signup successfully(file:///C:/Users/hp/IdeaProjects/demoblaze/src/main/resources/Features/TC01_signUp.feature:6)
+</textarea>
+      
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Verify that the user can login Successfully</p>
+            <p class="text-sm">
+              <span>6:17:29 PM</span> / <span>00:00:10:267</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Verify that the user can login Successfully</h5>
+<span class='badge badge-success'>12.26.2024 6:17:29 PM</span>
+<span class='badge badge-danger'>12.26.2024 6:17:39 PM</span>
+<span class='badge badge-default'>00:00:10:267</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="10"><span class="badge log pass-bg mr-2">Pass</span>Verify that the user can login Successfully</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.UserClickOnLoginButton()">
+                <span>When Click on the Log in button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.user_login_with_valid(java.lang.String,java.lang.String)">
+                <span>And Login with valid "Mazen.magdi116@gmail.com" and "1234567890"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.click_on_login_button()">
+                <span>And click on login button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.verify_login(java.lang.String)">
+                <span>Then verify user login successfully "Mazen.magdi116@gmail.com"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="17"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Ensure that the user can add products to the cart</p>
+            <p class="text-sm">
+              <span>6:17:39 PM</span> / <span>00:00:20:893</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Ensure that the user can add products to the cart</h5>
+<span class='badge badge-success'>12.26.2024 6:17:39 PM</span>
+<span class='badge badge-danger'>12.26.2024 6:18:00 PM</span>
+<span class='badge badge-default'>00:00:20:893</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=17</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="18"><span class="badge log pass-bg mr-2">Pass</span>Ensure that the user can add products to the cart</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.UserClickOnLoginButton()">
+                <span>When Click on the Log in button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.user_login_with_valid(java.lang.String,java.lang.String)">
+                <span>And Login with valid "Mazen.magdi116@gmail.com" and "1234567890"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.click_on_login_button()">
+                <span>And click on login button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.verify_login(java.lang.String)">
+                <span>Then verify user login successfully "Mazen.magdi116@gmail.com"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.Click_on_Laptops_under_categories_on_the_homepage()">
+                <span>And Click on Laptops under categories on the homepage</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.Choose_Product_1()">
+                <span>And Choose Product 1</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.click_on_add_to_cart_button()">
+                <span>And click on add to cart button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.Validate_that_Product_has_been_successfully_added_to_the_cart()">
+                <span>And Validate that Product has been successfully added to the cart</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.navigate_to_laptops_page()">
+                <span>And navigate to laptops page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.Choose_Product_2()">
+                <span>And Choose Product 2</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.click_on_add_to_cart_button()">
+                <span>And click on add to cart button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC03_addProductsToCartSteps.Validate_that_Product_has_been_successfully_added_to_the_cart()">
+                <span>Then Validate that Product has been successfully added to the cart</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="33"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">: Ensure that both products are in the cart with accurate details</p>
+            <p class="text-sm">
+              <span>6:18:00 PM</span> / <span>00:00:15:288</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">: Ensure that both products are in the cart with accurate details</h5>
+<span class='badge badge-success'>12.26.2024 6:18:00 PM</span>
+<span class='badge badge-danger'>12.26.2024 6:18:15 PM</span>
+<span class='badge badge-default'>00:00:15:288</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=33</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="34"><span class="badge log pass-bg mr-2">Pass</span>: Ensure that both products are in the cart with accurate details</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.UserClickOnLoginButton()">
+                <span>When Click on the Log in button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.user_login_with_valid(java.lang.String,java.lang.String)">
+                <span>And Login with valid "Mazen.magdi116@gmail.com" and "1234567890"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.click_on_login_button()">
+                <span>And click on login button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.verify_login(java.lang.String)">
+                <span>Then verify user login successfully "Mazen.magdi116@gmail.com"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Click_on_the_Cart_button_in_the_Header()">
+                <span>And Click on the Cart button in the Header</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Verify_product1_added_with_the_same_title_and_price()">
+                <span>And Verify product1 added with the same title and price</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Verify_product2_added_with_the_same_title_and_price()">
+                <span>And Verify product2 added with the same title and price</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Verify_Total_Amount_Calculation()">
+                <span>And Verify Total Amount Calculation</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="45"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">Ensure that the user can successfully complete the purchase</p>
+            <p class="text-sm">
+              <span>6:18:15 PM</span> / <span>00:00:17:703</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">Ensure that the user can successfully complete the purchase</h5>
+<span class='badge badge-success'>12.26.2024 6:18:15 PM</span>
+<span class='badge badge-danger'>12.26.2024 6:18:33 PM</span>
+<span class='badge badge-default'>00:00:17:703</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=45</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="46"><span class="badge log pass-bg mr-2">Pass</span>Ensure that the user can successfully complete the purchase</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.UserClickOnLoginButton()">
+                <span>When Click on the Log in button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.user_login_with_valid(java.lang.String,java.lang.String)">
+                <span>And Login with valid "Mazen.magdi116@gmail.com" and "1234567890"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.click_on_login_button()">
+                <span>And click on login button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC02_loginSteps.verify_login(java.lang.String)">
+                <span>Then verify user login successfully "Mazen.magdi116@gmail.com"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Click_on_the_Cart_button_in_the_Header()">
+                <span>And Click on the Cart button in the Header</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Verify_product1_added_with_the_same_title_and_price()">
+                <span>And Verify product1 added with the same title and price</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Verify_product2_added_with_the_same_title_and_price()">
+                <span>And Verify product2 added with the same title and price</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC04_CartValidation.Verify_Total_Amount_Calculation()">
+                <span>And Verify Total Amount Calculation</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC05_CheckOutSteps.click_on_place_order_button()">
+                <span>And click on place order button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC05_CheckOutSteps.validate_the_purchase_total_amount()">
+                <span>And validate the purchase total amount of money</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC05_CheckOutSteps.fill_the_data(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)">
+                <span>And fill data name "Mazen" country "EGYPT" city "CAIRO" card "1111222233334444" month "11" year "29"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC05_CheckOutSteps.click_on_purchase_button()">
+                <span>And click on purchase button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepDefs.TC05_CheckOutSteps.verify_that_the_purchase_completed_successfully()">
+                <span>Then verify that the purchase completed successfully</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@smoke</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@smoke</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>18:18:00 PM</td>
+<td>
+<a href="#" class="linked" test-id='33' id='34'>: Ensure that both products are in the cart with accurate details</a>
+<div class="">
+<span class="badge badge-default">: Ensure that both products are in the cart with accurate details.: Ensure that both products are in the cart with accurate details</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">java.lang.AssertionError</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.AssertionError</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>18:17:24 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='7'>Then verify user signup successfully</a>
+<div class="">
+<span class="badge badge-default">Verify that User Can Sign Up Successfully.Verify that User Can Sign Up Successfully.Then verify user signup successfully</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div>        </div>
+      </div>
+    </div>
+  </div>
+<script src="spark/spark-script.js"></script>
+<script type="text/javascript">
+        </script></body>
+</html>
